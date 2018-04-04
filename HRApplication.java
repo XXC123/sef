@@ -18,7 +18,7 @@ public class HRApplication {
 	{
 	//to-do	
 	}
-	public void checkPaytate()
+	public void checkPayrate()
 	{
 	//to-do	
 	}
