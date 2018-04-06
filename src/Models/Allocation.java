@@ -1,4 +1,4 @@
-package Models;
+package sefA1;
 
 public class Allocation {
 

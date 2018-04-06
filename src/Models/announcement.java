@@ -1,11 +1,11 @@
-package Models;
+package sefA1;
 
 public class announcement {
 
 	
 	private String announcement;
 
-	public announcement(String announcement)
+	public void announcement(String announcement)
 	{
 		this.announcement=announcement;
 	}

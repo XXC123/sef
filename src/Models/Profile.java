@@ -1,4 +1,4 @@
-package Models;
+package sefA1;
 
 import java.util.Scanner;
 
@@ -6,13 +6,21 @@ public class Profile {
 
 	Scanner scanner=new Scanner(System.in);
 	
-	private String name;
+	private String givenName;
+	private String familyName;
+	
 	private String dob;
 	private String phone;
 	private String email;
+	private String type;
 
-	public Profile()
+	public Profile(String givenName,String familyName,String dob,String phone,String email)
 	{
+		this.givenName=givenName;
+		this.familyName=familyName;
+		this.dob=dob;
+		this.phone=phone;
+		this.email=email;
 	}
 	
 	public void updateProfile()
@@ -22,7 +30,8 @@ public class Profile {
 	
 	public void viewProfile()
 	{
-		System.out.println("Name: "+this.name);
+		System.out.println("Given name: "+this.givenName);
+		System.out.println("Family name: "+this.familyName);
 		System.out.println("Date of birth: "+this.dob);
 		System.out.println("Phone: "+this.phone);
 		System.out.println("Email: "+this.email);
@@ -33,14 +42,27 @@ public class Profile {
 	//to-do	
 	}
 
-	public String getName() {
-		return name;
+	public String getFamilyName()
+	{
+		return familyName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFamilyName(String familyName)
+	{
+		this.familyName=familyName;
 	}
-
+	
+	
+	public String getGivenName()
+	{
+		return givenName;
+	}
+	
+	public void setGivenName(String givenName)
+	{
+		this.givenName=givenName;
+	}
+	
 	public String getDob() {
 		return dob;
 	}
@@ -66,8 +88,11 @@ public class Profile {
 	}
 
 	public void modifyProfile() {
-		System.out.println("Input new name");
-		this.name=scanner.next();
+		System.out.println("Input new given name");
+		this.givenName=scanner.next();
+		
+		System.out.println("Input new family name");
+		this.familyName=scanner.next();
 		
 		System.out.println("Input new dob");
 		this.dob=scanner.next();
