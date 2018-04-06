@@ -1,6 +1,7 @@
-package sefA1;
+package Controller;
 
 import java.util.Scanner;
+import Models.*;
 
 public class HRApplication {
 

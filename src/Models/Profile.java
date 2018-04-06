@@ -1,4 +1,4 @@
-package sefA1;
+package Models;
 
 import java.util.Scanner;
 

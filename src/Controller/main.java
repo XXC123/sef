@@ -1,5 +1,6 @@
-package sefA1;
+package Controller;
 
+import Models.*;
 public class main {
 
 	public static void main(String[] args) {
