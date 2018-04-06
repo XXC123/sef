@@ -1,25 +1,31 @@
-package Controller;
+package sefA1;
 
 import java.util.Scanner;
-import Models.*;
 
 public class HRApplication {
 
 	Scanner scanner=new Scanner(System.in);
-	
-	
-	public void login()
+	Database database;
+	Profile profile;
+	Message message;
+	String staffType;
+
+	public HRApplication()
 	{
-	//to-do	
+		Database database=new Database(); //initial database
+		this.database=database;
 	}
+	
 	
 	public void run() {
 		// TODO Auto-generated method stub
-		adminUI();
+		staffType=login();
+		selectMenu(staffType);
 	}
 	
 	public void adminUI()
 	{
+		System.out.println();
 		System.out.println("-----------Menu-----------");
 		System.out.println("1.Message other staff");
 		System.out.println("2.Check announcements/ notifications");
@@ -70,6 +76,8 @@ public class HRApplication {
 	
 	public void coordinatorUI()
 	{
+		System.out.println();
+		System.out.println("-----------Menu-----------");
 		System.out.println("1.Message other staff");
 		System.out.println("2.Check announcements/ notifications");
 		System.out.println("3.Check pay rates");
@@ -120,6 +128,8 @@ public class HRApplication {
 	
 	public void casualUI()
 	{
+		System.out.println();
+		System.out.println("-----------Menu-----------");
 		System.out.println("1.Message other staff");
 		System.out.println("2.Check announcements/ notifications");
 		System.out.println("3.Check pay rates ");
@@ -168,6 +178,8 @@ public class HRApplication {
 	
 	public void timeManagerUI()
 	{
+		System.out.println();
+		System.out.println("-----------Menu-----------");
 		System.out.println("1.Message other staff");
 		System.out.println("2.Check announcements/ notifications");
 		System.out.println("3.Check pay rates");
@@ -213,6 +225,47 @@ public class HRApplication {
 		}
 	
 	}
+	
+	// login function
+	public String login()
+	{
+		String staffType=null;
+		boolean loginSuccess= false;
+		String inputUsername;
+		String inputPassword;
+		
+		
+		while( loginSuccess == false)
+		{
+			System.out.println("Log in");
+			System.out.println("Username:");
+			inputUsername = scanner.next();
+		
+			System.out.println("Password:");
+			inputPassword = scanner.next();
+			int staffAmount=database.staffDatabase.size();
+			
+			for(int scanStaffList=0; scanStaffList<staffAmount;scanStaffList++)
+			{
+				if (database.staffDatabase.get(scanStaffList).getUsername().equals(inputUsername))
+				{
+					if (inputPassword.equals(database.staffDatabase.get(scanStaffList).getPassword())) 
+					{
+						loginSuccess = true;
+						staffType=database.staffDatabase.get(scanStaffList).getStaffType();
+						profile =new Profile(database.staffDatabase.get(scanStaffList).getGivenName(),database.staffDatabase.get(scanStaffList).getFamilyName(),database.staffDatabase.get(scanStaffList).getDob(),database.staffDatabase.get(scanStaffList).getPhone(),database.staffDatabase.get(scanStaffList).getEmail());
+						System.out.println("Welcome to the system.");
+						break;
+					}
+				}	
+			}
+			if (loginSuccess== false)
+			System.out.println("Username or password is wrong!");
+			
+		}
+		return staffType;
+	}
+	
 	
 	public void message()
 	{
@@ -280,8 +333,8 @@ public class HRApplication {
 	}
 	public void viewProfile()
 	{
-	Profile profile= new Profile();
-	profile.viewProfile();
+
+	profile.viewProfile(); //
 	
 	System.out.println("-------Modify your profile:-------");
 	System.out.println("1.Modify whole profile");
@@ -295,27 +348,32 @@ public class HRApplication {
 			break;
 		case 2:
 			
-			System.out.println("1.Modify name");
-			System.out.println("2.Modify dob");
-			System.out.println("3.Modify phone");
-			System.out.println("4.Modify email");
+			System.out.println("1.Modify given name");
+			System.out.println("2.Modify faminly name");
+			System.out.println("3.Modify dob");
+			System.out.println("4.Modify phone");
+			System.out.println("5.Modify email");
 			
 			selection= scanner.nextInt();
 			switch(selection)
 			{
 			case 1:
-				System.out.println("Input new name");
-				profile.setName(scanner.next());
+				System.out.println("Input new given name");
+				profile.setGivenName(scanner.next());
 				break;
 			case 2:
+				System.out.println("Input new family name");
+				profile.setFamilyName(scanner.next());
+				break;
+			case 3:
 				System.out.println("Input new dob");
 				profile.setDob(scanner.next());
 				break;
-			case 3:
+			case 4:
 				System.out.println("Input new phone");
 				profile.setPhone(scanner.next());
 				break;
-			case 4:
+			case 5:
 				System.out.println("Input new email");
 				profile.setEmail(scanner.next());
 				break;
@@ -323,7 +381,22 @@ public class HRApplication {
 			break;
 	}
 	profile.viewProfile();
-		
+	selectMenu(staffType);
 	}
+	
+	public void selectMenu(String staffType)
+	{
+	if(staffType.equals("admin"))
+		adminUI();
+	else if(staffType.equals("coordinator"))
+		coordinatorUI();
+	else if(staffType.equals("casual"))
+		casualUI();
+	else if (staffType.equals("time"))
+		timeManagerUI();
+	else 
+		System.out.println("Staff type is wrong: "+staffType);
+	}
+	
 }
 
