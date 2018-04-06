@@ -11,7 +11,7 @@ public class Profile {
 	private String phone;
 	private String email;
 
-	public void Profile()
+	public Profile()
 	{
 	}
 	

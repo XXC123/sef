@@ -9,7 +9,7 @@ public class message {
 	private String subject;
 	private String message;
 
-	public void message(String sender, String recipient, String subject, String message)
+	public message(String sender, String recipient, String subject, String message)
 	{
 		this.sender = sender;
 		this.recipient = recipient;

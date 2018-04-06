@@ -8,7 +8,7 @@ public class RosterEvent {
 	private String end;
 	private String payRate;
 
-	public void RosterEvent(String name, String start, String end, String payRate)
+	public RosterEvent(String name, String start, String end, String payRate)
 	{
 		this.name=name;
 		this.start=start;

@@ -1,5 +1,6 @@
 package Controller;
 
+import java.util.*;
 import Models.*;
 public class main {
 
@@ -10,11 +11,11 @@ public class main {
 		String inputPassword;
 		boolean loginSuccess= false;
 		
-		HashMap<String, staff> staffMembers = new HashMap<String, staff>();
+		HashMap<String, Staff> staffMembers = new HashMap<String, Staff>();
 		
-		staff[] staffAccounts = new staff[2];
-		staffAccounts [0] = new staff ("JS01021984", "Lovingthealien42");
-		staffAccounts [1] = new staff ("JD02031983", "Lifeonmars44");
+		Staff[] staffAccounts = new Staff[2];
+		staffAccounts [0] = new Staff ("JS01021984", "Lovingthealien42");
+		staffAccounts [1] = new Staff ("JD02031983", "Lifeonmars44");
 		
 		for (int i=0; i<staffAccounts.length; i++)
 		{
