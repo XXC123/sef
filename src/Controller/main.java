@@ -1,4 +1,4 @@
-package sefA1;
+package Controller;
 
 public class main {
 

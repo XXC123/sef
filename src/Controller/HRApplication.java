@@ -1,6 +1,11 @@
-package sefA1;
+package Controller;
 
 import java.util.Scanner;
+
+import Models.Database;
+import Models.Message;
+import Models.Profile;
+import Models.Report;
 
 public class HRApplication {
 
@@ -243,17 +248,17 @@ public class HRApplication {
 		
 			System.out.println("Password:");
 			inputPassword = scanner.next();
-			int staffAmount=database.staffDatabase.size();
+			int staffAmount=database.getStaffDatabase().size();
 			
 			for(int scanStaffList=0; scanStaffList<staffAmount;scanStaffList++)
 			{
-				if (database.staffDatabase.get(scanStaffList).getUsername().equals(inputUsername))
+				if (database.getStaffDatabase().get(scanStaffList).getUsername().equals(inputUsername))
 				{
-					if (inputPassword.equals(database.staffDatabase.get(scanStaffList).getPassword())) 
+					if (inputPassword.equals(database.getStaffDatabase().get(scanStaffList).getPassword())) 
 					{
 						loginSuccess = true;
-						staffType=database.staffDatabase.get(scanStaffList).getStaffType();
-						profile =new Profile(database.staffDatabase.get(scanStaffList).getGivenName(),database.staffDatabase.get(scanStaffList).getFamilyName(),database.staffDatabase.get(scanStaffList).getDob(),database.staffDatabase.get(scanStaffList).getPhone(),database.staffDatabase.get(scanStaffList).getEmail());
+						staffType=database.getStaffDatabase().get(scanStaffList).getStaffType();
+						profile =new Profile(database.getStaffDatabase().get(scanStaffList).getGivenName(),database.getStaffDatabase().get(scanStaffList).getFamilyName(),database.getStaffDatabase().get(scanStaffList).getDob(),database.getStaffDatabase().get(scanStaffList).getPhone(),database.getStaffDatabase().get(scanStaffList).getEmail());
 						System.out.println("Welcome to the system.");
 						break;
 					}
